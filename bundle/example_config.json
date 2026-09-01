@@ -1,0 +1,131 @@
+{
+  "ociVersion": "1.0.2",
+  "process": {
+    "terminal": false,
+    "user": {
+      "uid": 0,
+      "gid": 0
+    },
+    "args": [
+      "/bin/sh"
+    ],
+    "env": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "TERM=xterm",
+      "HOME=/root"
+    ],
+    "cwd": "/",
+    "capabilities": {
+      "bounding": [
+        "CAP_AUDIT_WRITE",
+        "CAP_KILL",
+        "CAP_NET_BIND_SERVICE"
+      ],
+      "effective": [
+        "CAP_AUDIT_WRITE",
+        "CAP_KILL",
+        "CAP_NET_BIND_SERVICE"
+      ],
+      "permitted": [
+        "CAP_AUDIT_WRITE",
+        "CAP_KILL",
+        "CAP_NET_BIND_SERVICE"
+      ]
+    }
+  },
+  "root": {
+    "path": "rootfs",
+    "readonly": false
+  },
+  "hostname": "mycontainer",
+  "mounts": [
+    {
+      "destination": "/proc",
+      "type": "proc",
+      "source": "proc"
+    },
+    {
+      "destination": "/dev",
+      "type": "tmpfs",
+      "source": "tmpfs",
+      "options": [
+        "nosuid",
+        "strictatime",
+        "mode=755",
+        "size=65536k"
+      ]
+    },
+    {
+      "destination": "/dev/pts",
+      "type": "devpts",
+      "source": "devpts",
+      "options": [
+        "nosuid",
+        "noexec",
+        "newinstance",
+        "ptmxmode=0666",
+        "mode=0620"
+      ]
+    },
+    {
+      "destination": "/sys",
+      "type": "sysfs",
+      "source": "sysfs",
+      "options": [
+        "nosuid",
+        "noexec",
+        "nodev",
+        "ro"
+      ]
+    },
+    {
+      "destination": "/tmp",
+      "type": "tmpfs",
+      "source": "tmpfs",
+      "options": [
+        "nosuid",
+        "nodev",
+        "mode=1777"
+      ]
+    }
+  ],
+  "linux": {
+    "namespaces": [
+      { "type": "pid" },
+      { "type": "mount" },
+      { "type": "uts" },
+      { "type": "ipc" },
+      { "type": "network" }
+    ],
+    "resources": {
+      "memory": {
+        "limit": 134217728
+      },
+      "cpu": {
+        "quota": 100000,
+        "period": 100000
+      },
+      "pids": {
+        "limit": 64
+      }
+    },
+    "maskedPaths": [
+      "/proc/acpi",
+      "/proc/asound",
+      "/proc/kcore",
+      "/proc/keys",
+      "/proc/latency_stats",
+      "/proc/timer_list",
+      "/proc/timer_stats",
+      "/proc/sched_debug",
+      "/sys/firmware"
+    ],
+    "readonlyPaths": [
+      "/proc/bus",
+      "/proc/fs",
+      "/proc/irq",
+      "/proc/sys",
+      "/proc/sysrq-trigger"
+    ]
+  }
+}

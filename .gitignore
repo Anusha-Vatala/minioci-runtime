@@ -1,0 +1,18 @@
+# Build output
+myruntime
+myruntime.exe
+
+# Go cache
+vendor/
+
+# Editor
+.vscode/
+*.swp
+*.swo
+
+# Bundle directories (large, contain rootfs)
+/tmp/
+*.tar.gz
+
+# Container state (runtime only)
+# /run/myruntime/ is on a tmpfs — not versioned

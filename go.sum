@@ -1,0 +1,3 @@
+# NOTE: This go.sum file is a placeholder.
+# Run `go mod tidy` on Linux after cloning to generate the correct checksum.
+# The real entry for golang.org/x/sys will be filled in by `go mod tidy`.
