@@ -127,7 +127,7 @@ func IsOverlaySupported() bool {
 	}
 	// /proc/filesystems contains lines like "nodev\toverlay"
 	for _, line := range splitLines(string(data)) {
-		if filepath.Base(line) == "overlay" || line == "overlay" || len(line) > 0 && line[len(line)-7:] == "overlay" {
+		if filepath.Base(line) == "overlay" || line == "overlay" || len(line) >= 7 && line[len(line)-7:] == "overlay" {
 			return true
 		}
 	}
